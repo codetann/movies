@@ -4,6 +4,7 @@ const key = "64f2b3b60f4518d050113f7ae5a728b8";
 
 export const api = {
   // --------------------------------------------------------------------
+  //? Searches the database for a specific movie. A movie title must be used as a parameter
   async search(title) {
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${key}`;
     try {
@@ -20,6 +21,7 @@ export const api = {
     }
   },
   // --------------------------------------------------------------------
+  //? Returns a list of trending tv/movies
   async trending() {
     const url = `https://api.themoviedb.org/3/trending/all/day?api_key=${key}`;
     try {
@@ -34,6 +36,111 @@ export const api = {
     }
   },
   // --------------------------------------------------------------------
+  //? Returns a list of popular movies
+  async popularMovies() {
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`;
+    try {
+      const res = await fetch(url);
+
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  // ------------------------------------------------------------------------
+  //? Returns a list of top rated movies
+  async topratedMovies() {
+    const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`;
+    try {
+      const res = await fetch(url);
+
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  // -------------------------------------------------------------------------
+  //? Returns a list of upcoming movies
+  async upcomingMovies() {
+    const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`;
+    try {
+      const res = await fetch(url);
+
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  // -------------------------------------------------------------------------------
+  //? Returns a list of now playing movies
+  async nowplayingMovies() {
+    const url = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
+    try {
+      const res = await fetch(url);
+
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  // -------------------------------------------------------------------------------
+  //? Returns a list of latest movies
+  async latestMovies() {
+    const url = `https://api.themoviedb.org/3/movie/latest?api_key=${key}&language=en-US&page=1`;
+    try {
+      const res = await fetch(url);
+
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  // -------------------------------------------------------------------------------
+  //? Returns a list of popular movies
+  async getMovies(filter) {
+    const url = `https://api.themoviedb.org/3/movie/${filter}?api_key=${key}&language=en-US&page=1`;
+    try {
+      const res = await fetch(url);
+
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  //
+  async getDetails(id) {
+    const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`;
+    try {
+      const res = await fetch(url);
+
+      if (res.ok) {
+        const data = await res.json();
+        return data;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  // --------------------------------------------------------------------
+  //? Takes in an array of genre ids and returns the name assosiated with them
   getGenre(ids) {
     let list = [];
     for (let i = 0; i < ids.length; i++) {

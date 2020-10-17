@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useSpring, useTransition, animated } from "react-spring";
+import { storage } from "../../storage";
 
 import { api } from "../../movie-api";
 
@@ -7,6 +9,15 @@ export default function Header() {
   const [img, setImg] = useState("");
   const [genre, setGenre] = useState([]);
   const [year, setYear] = useState("");
+
+  const [show, set] = useState(false);
+  const transitions = useTransition(show, null, {
+    from: { position: "absolute", opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  });
+
+  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
 
   useEffect(() => {
     // fetches a random title for the trending tv shows
@@ -18,7 +29,6 @@ export default function Header() {
       setData(res.results[randomNum]);
       setImg(res.results[randomNum].backdrop_path);
       setGenre(api.getGenre(res.results[randomNum].genre_ids));
-
       setYear(
         temp.release_date
           ? temp.release_date.substring(0, 4)
@@ -28,15 +38,21 @@ export default function Header() {
     getData();
   }, []);
 
+  const test = () => {
+    console.log(data);
+  };
+
   return (
     <div
-      style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original${img})`,
-      }}
+      style={
+        (props,
+        {
+          backgroundImage: `url(https://image.tmdb.org/t/p/original${img})`,
+        })
+      }
       className="header"
     >
-      <button onClick={() => console.log(data)}>LOG</button>
-      <h1>{data.title || data.name}</h1>
+      <h1 className="h1">{data.title || data.name}</h1>
       <span className="info">
         <p>{`${genre[0]}, ${genre[1]}`}</p>
         <i className="fas fa-calendar-week"></i>

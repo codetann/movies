@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Home from "./components/Home/Home";
+import Movies from "./components/Movies/Movies";
+import Selected from "./components/Selected/Selected";
+import Favorite from "./components/Favorites/Favorites";
 
 import { api } from "./movie-api";
 
@@ -16,6 +19,9 @@ function App() {
   return (
     <Router className="App">
       <Route path="/" exact component={Home} />
+      <Route path="/movies" component={Movies} />
+      <Route path="/selected" exact component={Selected} />
+      <Route path="/favorites" component={Favorite} />
     </Router>
   );
 }

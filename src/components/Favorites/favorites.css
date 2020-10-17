@@ -1,0 +1,67 @@
+.favorites {
+  width: 100%;
+  padding: 0 5%;
+}
+
+.fav-container {
+  width: 100%;
+  height: 90vh;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.fav-container .fav-component {
+  width: 300px;
+  height: 500px;
+  margin-bottom: 60px;
+  border-radius: 10px;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.fav-container .fav-component .img {
+  padding: 10px;
+  border-radius: 10px;
+  width: 296px;
+  height: 444.5px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.fav-container .title-info {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.fav-container .title-info .rating {
+  padding: 10px 10px 10px 0;
+  font-size: 14px;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=favorites.css.map */
